@@ -1,16 +1,21 @@
 "use strict";
 
-let numberOfFilms=null;
-let tempName;
-let tempScore;
+const options ={
+    name: 'test',
+    width: 1024,
+    height: 1024,
+    colors: {
+        border: 'black',
+        bg: 'red'
+    },
+    showName: function(){
+        console.log(options.name);
+    }
+}
+const {border, bg} = options.colors;
+console.log(border);
+options.showName();
 
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {}, //
-    actors: {},
-    genres: [],
-    privat: false
-};
 
 function start() {
         numberOfFilms = +prompt("Сколько фильмов вы уже просмотрели?", "0");
@@ -18,7 +23,8 @@ function start() {
         numberOfFilms  = +prompt("Сколько фильмов вы уже просмотрели? Пожалуйста, введите число", "0");
     }
 }
-function rememberMyFilms(params) { //Запись в personalMovieDB элемента по названию фильма
+//Запись в personalMovieDB элемента по названию фильма
+function rememberMyFilms(params) { 
     for (let i = 0; i < 2; i++) {
         do {
             tempName=prompt('Один из последних фильмов?', '');
@@ -31,7 +37,8 @@ function rememberMyFilms(params) { //Запись в personalMovieDB элеме�
     tempScore=null;
     tempName=null;
 }
-function detectPersonalLevel(params) { // Определение уровня киномана
+// Определение уровня киномана
+function detectPersonalLevel(params) { 
     if (personalMovieDB.count<10)
         console.log ("Просмотрено довольно мало фильмов");
     else if (personalMovieDB.count>10 && personalMovieDB.count<30) 
@@ -40,7 +47,8 @@ function detectPersonalLevel(params) { // Определение уровня к
         console.log ("Вы киноман");
     else console.log ("ошибка");
 }
-function showMyDb(){ // Вывод объекта personalMovieDB, если параметр равен Ложь
+// Вывод объекта personalMovieDB, если параметр равен Ложь
+function showMyDb(){ 
     if (personalMovieDB.privat == false)
         console.log(personalMovieDB);
     else 
@@ -52,8 +60,7 @@ function writeYourGenres(num) { //
 }
 
 //Main
-//Заполнение названий и оценок
-start();
-writeYourGenres(3);
-showMyDb(false);
+// start();
+// writeYourGenres(3);
+// showMyDb(false);
 
